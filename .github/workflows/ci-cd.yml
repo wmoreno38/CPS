@@ -24,23 +24,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: SonarCloud
-      
-      - uses: actions/checkout@v3
+      - name: Run SonarCloud Analysis
+        uses: sonarsource/sonarcloud-github-action@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      
+          args: >
+            -Dsonar.projectKey=wmoreno38_CPS
+            -Dsonar.organization=wmoreno38
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
-      
       - name: Run tests
         run: npm test
 
       - name: Build application
         run: npm run build
 
-     
+      - name: Deploy application
+        run: npm run deploy
+        env:
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
