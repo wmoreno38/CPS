@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,8 +28,8 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@v2
         with:
           args: >
-            -Dsonar.projectKey=<wmoreno38_CPS>
-            -Dsonar.organization=<wmoreno38>
+            -Dsonar.projectKey=wmoreno38_CPS
+            -Dsonar.organization=wmoreno38
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
