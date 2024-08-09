@@ -28,8 +28,8 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@v2
         with:
           args: >
-            -Dsonar.projectKey=wmoreno38_CPS
-            -Dsonar.organization=wmoreno38
+            -Dsonar.projectKey=your_project_key
+            -Dsonar.organization=your_organization
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
