@@ -1,28 +1,45 @@
-name: CI Pipeline
+#!/bin/bash
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# Configuración
+REPO_URL="https://github.com/wmoreno38/CPS.git"
+REPO_DIR="/ruta/donde/clonar/el/repositorio"
+BRANCH="main"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# Clonar o actualizar el repositorio
+if [ -d "$REPO_DIR" ]; then
+    echo "Actualizando el repositorio existente..."
+    cd "$REPO_DIR"
+    git pull origin $BRANCH
+else
+    echo "Clonando el repositorio..."
+    git clone $REPO_URL $REPO_DIR
+    cd "$REPO_DIR"
+fi
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+# Verificar si el clonaje fue exitoso
+if [ $? -ne 0 ]; then
+    echo "Error al clonar o actualizar el repositorio."
+    exit 1
+fi
 
-    - name: Set up README.md
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+# Instalar dependencias
+echo "Instalando dependencias..."
+# Dependiendo del entorno y el lenguaje, esto puede variar.
+# Si es un proyecto Node.js:
+if [ -f "package.json" ]; then
+    npm install
+elif [ -f "requirements.txt" ]; then
+    pip install -r requirements.txt
+# Agrega más condiciones según el tipo de proyecto
+fi
 
-    - name: Install dependencies
-      run: npm install
+# Ejecutar la aplicación
+echo "Ejecutando la aplicación..."
+# Dependiendo de tu entorno, esto podría ser:
+# Para Node.js:
+# npm start
+# Para un servidor Python Flask/Django:
+# python app.py
+# Agrega más comandos según sea necesario
 
-    - name: Run tests
-      run: npm test
+echo "Despliegue completado."
