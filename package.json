@@ -1,9 +1,5 @@
 {
-{
-  "scripts": {
-    "build": "command-to-build-your-app"
-  }
-}
+
 
   
   "squadName": "Super hero squad",
@@ -41,4 +37,10 @@
       ]
     }
   ]
+
+  {
+  "scripts": {
+    "build": "command-to-build-your-app"
+  }
+}
 }
