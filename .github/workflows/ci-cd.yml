@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-          - name: Run SonarCloud Analysis
+      - name: Run SonarCloud Analysis
         uses: sonarsource/sonarcloud-github-action@v2
         with:
           args: >
@@ -38,3 +38,8 @@ jobs:
 
       - name: Build application
         run: npm run build
+
+      - name: Deploy application
+        run: npm run deploy
+        env:
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
