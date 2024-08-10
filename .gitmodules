@@ -1,0 +1,3 @@
+[submodule "CPS"]
+   path = CPS
+   url = <URL_del_repositorio_del_submódulo>
