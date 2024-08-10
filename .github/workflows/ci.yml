@@ -30,7 +30,7 @@ jobs:
       run: |
         pytest
 
-    - name: SonarCloud Scan
+    - name: SonarCloud Scan 
       uses: SonarSource/sonarcloud-github-action@v1.5
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
