@@ -1,0 +1,21 @@
+{
+  "name": "mi-proyecto",
+  "version": "1.0.0",
+  "description": "Un ejemplo básico de un proyecto Node.js para CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests defined yet\"",
+    "build": "echo \"Construyendo la aplicación...\"",
+    "deploy": "echo \"Desplegando la aplicación...\""
+  },
+  "author": "Tu Nombre",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
+
